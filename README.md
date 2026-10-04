@@ -6,7 +6,7 @@
 
 > 🌐 **Live Website Application:** [https://smartroute-ai-qn26.onrender.com/](https://smartroute-ai-qn26.onrender.com/)  
 > 📖 **Interactive Swagger API Docs:** [https://smartroute-ai-qn26.onrender.com/docs](https://smartroute-ai-qn26.onrender.com/docs)  
-> 🎓 **Final-Year Internship Project for Nassau Candy Distributor**  
+> 🎓 **Project for Nassau Candy Distributor**  
 > Built with **React**, **FastAPI**, **SQLite / PostgreSQL**, **Scikit-Learn**, **Tailwind CSS**, and **Leaflet**.
 
 ---
