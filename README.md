@@ -106,6 +106,56 @@ This restores real-world shipping durations:
 
 ---
 
+## 🆕 Extended Enterprise Logistics & AI Modules
+
+### 1. 📦 New Order Management (`/api/v1/new-orders`)
+- **End-to-End Order Lifecycle:** Allows dispatch managers to enter new customer orders (`NEW` → `PROCESSING` → `SHIPPED` → `DELIVERED` → `CANCELLED`).
+- **Automated Factory Allocation:** Eliminates manual guessing by auto-mapping customer confectionery products directly to the 5 specialized factories (`Wicked Choccy's`, `Sugar Shack`, `The Other Factory`, `Secret Factory`, `Lot's O' Nuts`).
+- **AI Prediction Integration:** Instantly scores newly placed orders with estimated lead times (ETA in days) and multi-class SLA delay risk ratings (`Low Risk`, `Medium/Moderate Risk`, `High Risk`).
+- **Database Separation:** Stored in the dedicated `new_orders` database table without modifying or corrupting historical dataset records.
+
+### 2. 📊 Prediction Performance (Prediction vs Actual) (`/api/v1/predictions/performance`)
+- **Continuous Evaluation:** Automatically compares machine learning predictions against ground-truth delivery outcomes for completed orders.
+- **Continuous Lead-Time Metrics:** Computes Mean Absolute Error (MAE), Root Mean Square Error (RMSE), Absolute Error per order, and Tolerance Accuracy ($\le 1.0\text{ day}$).
+- **Classification Risk Metrics:** Generates a real-time $2 \times 2$ Confusion Matrix ($\text{TP}, \text{FP}, \text{FN}, \text{TN}$) with Precision, Recall, and F1-score for delay classifications.
+- **Integrity Rule:** Strictly excludes pending orders without verified delivery outcomes to prevent synthetic distortion.
+
+### 3. 📈 Model Performance Monitoring (`/api/v1/models/monitoring`)
+- **Deployed Model Observability:** Live monitoring across 4 production models:
+  1. *Random Forest Delay Classifier* (Precision, Recall, F1-Score)
+  2. *Gradient Boosted ETA Regressor* (MAE, RMSE, $R^2$)
+  3. *Isolation Forest Outlier Detector* (Contamination Rate, Outlier Frequency)
+  4. *14-Day Rolling Forecaster* (Horizon Projection Accuracy)
+- **Drift & Degradation Detection:** Automated health warnings (`HEALTHY` vs `NEEDS_ATTENTION`) triggered when live MAE exceeds baseline by $>25\%$ or F1 drops by $>0.10$.
+- **Sample Quorum Safeguard:** Enforces a minimum sample size ($N \ge 5$) before asserting degradation warnings to avoid premature alerts.
+
+### 4. 🧪 AI Prediction Playground (`/api/v1/predictions/playground`)
+- **Interactive Sandbox:** Test hypothetical order scenarios (Product, Units, Customer State, Region, Ship Mode, Order Date) without database mutations.
+- **Feature Attribution:** Displays directional feature weights and SLA breach risk percentages.
+- **In-Memory Guarantee:** Runs inference directly through `ml_manager` without database writes, keeping production KPI counters pristine.
+
+### 5. ⚖️ Route Comparison Engine (`/api/v1/routes/compare`)
+- **Multi-Corridor Benchmark:** Compare 2 to 5 shipping corridors side-by-side.
+- **Variance & Reliability:** Computes lead-time standard deviation ($\sigma_{\text{lead\_time}}$) to quantify operational volatility alongside average lead time.
+- **Automated Differential Insights:** Synthesizes comparative delta percentages and identifies root-cause delay drivers across selected corridors.
+
+### 6. 🤖 AI Logistics Assistant (`/api/v1/assistant/query`)
+- **Conversational Analytics:** Authenticated natural language chat interface answering real questions about historical shipments, routes, factories, and order queues.
+- **Strict Read-Only Safety:** Translates natural language into deterministic, safe SQLAlchemy aggregations (zero raw or destructive SQL execution).
+- **Source Citation:** Every answer cites verified dataset and database table sources (e.g., `Carrier Mode Aggregation (10,194 shipments)`).
+
+### 7. 🔔 Notification Center (`/api/v1/notifications`)
+- **Slide-Over Drawer:** Real-time slide-over drawer connected to the top navbar bell with an unread badge counter.
+- **5-Domain Filtering:** Filter alerts across Orders, Models, Corridors, Anomaly Flags, and Data Quality.
+- **Persistent State:** Mark individual alerts as read, mark all read, or clear dismissed notifications.
+
+### 8. ⚡ Global Command Palette (`Ctrl + K`) (`/api/v1/search`)
+- **System-Wide Modal:** Keyboard-accessible command palette (`Ctrl + K` / `Cmd + K`).
+- **Multi-Entity Indexing:** Unified instant search covering modules, new orders, routes, factories, states, and products.
+- **Keyboard Navigation:** Full arrow key (`↑`/`↓`) selection, `Enter` to jump, and `ESC` to close.
+
+---
+
 ## ⚡ Quick Start & Setup Instructions
 
 ### 1. Prerequisites
