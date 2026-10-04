@@ -1,7 +1,13 @@
 # SmartRoute AI — Intelligent Factory-to-Customer Logistics Analytics & Decision Support System
 
-> **Final-Year Internship Project for Nassau Candy Distributor**  
-> Built with **React**, **FastAPI**, **PostgreSQL / SQLite**, **Scikit-Learn**, **Tailwind CSS**, and **Leaflet**.
+[![Live Demo](https://img.shields.io/badge/Live_Website-Render-2ea44f?style=for-the-badge&logo=render)](https://smartroute-ai-qn26.onrender.com/)
+[![FastAPI](https://img.shields.io/badge/REST_API-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://smartroute-ai-qn26.onrender.com/docs)
+[![React](https://img.shields.io/badge/Frontend-React_18-61DAFB?style=for-the-badge&logo=react)](https://smartroute-ai-qn26.onrender.com/)
+
+> 🌐 **Live Website Application:** [https://smartroute-ai-qn26.onrender.com/](https://smartroute-ai-qn26.onrender.com/)  
+> 📖 **Interactive Swagger API Docs:** [https://smartroute-ai-qn26.onrender.com/docs](https://smartroute-ai-qn26.onrender.com/docs)  
+> 🎓 **Final-Year Internship Project for Nassau Candy Distributor**  
+> Built with **React**, **FastAPI**, **SQLite / PostgreSQL**, **Scikit-Learn**, **Tailwind CSS**, and **Leaflet**.
 
 ---
 
